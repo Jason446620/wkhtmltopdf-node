@@ -11,7 +11,7 @@ var PDFDocument, doc;
 
 
 
-app.get('/pdfkit', function (req, res) {
+app.get('/pdfkitsample', function (req, res) {
     var fs = require("fs");
 
     PDFDocument = require('pdfkit');
@@ -44,6 +44,16 @@ app.get('/wkhtmltopdf', function (req, res) {
             output: 'pdf/wkhtmltopdf/'+uuidv4()+'.pdf',
             pageSize: 'letter'
         }); 
+    } catch (error) {
+        console.log(error.toString())
+    }
+    
+    res.send('Done!')
+});
+
+app.get('/pdfkit', function (req, res) {
+    try {
+        pdfkit.from_url('https://www.google.co.in/','pdf/wkhtmltopdf/'+uuidv4()+'new.pdf') 
     } catch (error) {
         console.log(error.toString())
     }
