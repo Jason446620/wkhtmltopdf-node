@@ -39,10 +39,15 @@ app.get('/pdfkit', function (req, res) {
 
 app.get('/wkhtmltopdf', function (req, res) {
 
-    wkhtmltopdf(fs.readFileSync("index.html", "utf8"), {
-        output: 'pdf/pdfkit/'+uuidv4()+'.pdf',
-        pageSize: 'letter'
-    });
+    try {
+        wkhtmltopdf(fs.readFileSync("index.html", "utf8"), {
+            output: 'pdf/wkhtmltopdf/'+uuidv4()+'.pdf',
+            pageSize: 'letter'
+        }); 
+    } catch (error) {
+        console.log(error.toString())
+    }
+    
     res.send('Done!')
 });
 
