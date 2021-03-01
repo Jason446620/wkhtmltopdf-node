@@ -40,7 +40,7 @@ app.get('/pdfkit', function (req, res) {
 app.get('/wkhtmltopdf', function (req, res) {
 
     try {
-        wkhtmltopdf(fs.readFileSync("index.html", "utf8"), {
+        wkhtmltopdf("index.html", {
             output: 'pdf/wkhtmltopdf/'+uuidv4()+'.pdf',
             pageSize: 'letter'
         }); 
